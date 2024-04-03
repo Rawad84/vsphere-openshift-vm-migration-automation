@@ -7,7 +7,6 @@ This repository contains automation scripts for managing VM migration tasks from
 
 2. Move inside the repository folder and execute the `install.py` script. This script checks for required Python modules and installs any missing ones
    
-3. Create namespace and the network-attachment-definition for each VM need to be migrated to Openshift
 
 ## Code Execution
 
@@ -28,11 +27,13 @@ The CSV file must adhere to a specified format and should be named "vm_details.c
    ?????,???,???????
    ```
 
-1. Stage VMs for Migration
+2. Stage VMs for Migration
 Run the `vm_staging.py` script to perform pre-flight checks and gather VM-related data.
 
+   *Please note that The code assumes that namespaces and Network Attachment Definitions (NADs) have already been created. As a next step for further improvement, we consider implementing logic to create namespaces and Network Attachment Definitions (NADs) if they do not already exist. This enhancement will enhance the script's functionality, allowing it to seamlessly operate in environments where these resources may not be pre-existing.*
 
-3. Generate Migration Plans
+
+1. Generate Migration Plans
 Execute the `create_plan.py` script to generate migration plans for each VM. This script generates migration plans and stores them in a JSON file (project_plans_map.json).
 
 
