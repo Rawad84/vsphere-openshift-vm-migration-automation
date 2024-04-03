@@ -72,7 +72,7 @@ if user_input.lower() == "yes":
                 if len(row) > 0:
                                            
                         if row[0] in list_namespace:
-                            colored_part = colored('vm-' + row[0], 'green', attrs=['bold'])
+                            colored_part = colored(row[0], 'green', attrs=['bold'])
                             print(colored_part , " namespace is exist")
                             custom_api = client.CustomObjectsApi()
                             try:

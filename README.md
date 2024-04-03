@@ -5,7 +5,9 @@ This repository contains automation scripts for managing VM migration tasks from
 
 1. To utlize the SDK used in post-migration.py script. Make sure you install it first following the instructions on the main page in [Repo](https://github.com/vmware/vsphere-automation-sdk-python).
 
-2. Move inside the repository folder and execute the `install.py` script. This script checks for required Python modules and installs any missing ones:
+2. Move inside the repository folder and execute the `install.py` script. This script checks for required Python modules and installs any missing ones
+   
+3. Create namespace and the network-attachment-definition for each VM need to be migrated to Openshift
 
 ## Code Execution
 
@@ -13,13 +15,13 @@ This repository contains automation scripts for managing VM migration tasks from
 The CSV file must adhere to a specified format and should be named "vm_details.csv," as demonstrated below:
 
    ```yaml
-   namespace,Name,VLAN
+   namespace,Name,NAD
 
-   11111,vm1,nad-vlan11
+   11111,vm1,vlan11
 
-   22222,vm2,nad-vlan22
+   22222,vm2,vlan22
 
-   33333,vm3,nad-vlan33
+   33333,vm3,vlan33
    .
    .
    .
@@ -38,7 +40,7 @@ Execute the `create_plan.py` script to generate migration plans for each VM. Thi
 Execute the `migration.py` script to initiate VM migration based on the generated plans.This script triggers the VM migration process and updates the migration plans accordingly.
 
 5.  Initiate Post migration  
-After VM migration is concluded, execute the `post-migration.py` script to remove the ethernet from the VM in VMware, rename it, and move it to archive folder in VMware for decomm later.
+After VM migration is concluded, execute the `post-migration.py` script to remove the  from the VM in VMware, rename it, and move it to archive folder in VMware for decomm later.
 
 ## Additional Information
 Ensure proper configuration of Kubernetes (~/.kube/config) to access the OpenShift cluster.
